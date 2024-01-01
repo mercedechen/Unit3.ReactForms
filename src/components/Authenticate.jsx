@@ -7,24 +7,23 @@ function Authenticate({token}) {
   const [username, setUsername] = useState(null);
 
   async function handleClick() {
-
-    try {
-      const response = await fetch('https://fsa-jwt-practice.herokuapp.com/authenticate', {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        }
-      })
-      const result = await response.json();
-      console.log("result", result);
-      setSuccessMessage(result.message);
-      setUsername(result.data.username);
-      console.log("result", result);
-    } catch (error) {
-      setError(error.message);
+      try {
+        const response = await fetch('https://fsa-jwt-practice.herokuapp.com/authenticate', {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          }
+        })
+        const result = await response.json();
+        console.log("result", result);
+        setSuccessMessage(result.message);
+        setUsername(result.data.username);
+        console.log("result", result);
+      } catch (error) {
+        setError("Unable to authenticate due to missing username or password. Please try again.", error.message);
+      }
     }
-  }
 
   return (
     <>

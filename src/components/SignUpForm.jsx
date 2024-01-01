@@ -9,7 +9,7 @@ function SignUpForm({setToken}) {
   async function handleSubmit(event) {
     event.preventDefault();
     if ((username.length < 8) && (password.length < 8)) {
-      setError("Username/password must be more than 8 characters")
+      setError("Username/password must be more than 8 characters.")
     } else {
       try {
         // use the values from state, not the state-setting functions
